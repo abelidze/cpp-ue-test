@@ -15,7 +15,7 @@ class ERIZOSTEST_API UUtilityFunctions : public UBlueprintFunctionLibrary
 	GENERATED_BODY()
 
 public:
-	/** */
+	/** Parse a first encountered integer value from string */
 	UFUNCTION(BlueprintPure, Category = "0 Tasks")
 	static int32 ParseInt(const FString& InString, bool bStrictMode = false);
 
