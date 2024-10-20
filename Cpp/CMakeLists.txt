@@ -79,7 +79,8 @@ unset(BUILD_WEB CACHE)
 
 if (BUILD_CLI)
     file(GLOB_RECURSE SRC_CLI . ${src}/game/*.cpp)
-    add_executable(${EXECUTABLE} ${src}/main.cpp ${SRC_CLI})
+    file(GLOB_RECURSE PROJECT_HEADERS . *.hpp)
+    add_executable(${EXECUTABLE} ${src}/main.cpp ${src}/utils.cpp ${SRC_CLI} ${PROJECT_HEADERS})
     # add_dependencies(${EXECUTABLE} ${DEPS})
     set_target_properties(${EXECUTABLE} PROPERTIES VERSION ${CMAKE_PROJECT_VERSION} SOVERSION ${CMAKE_PROJECT_VERSION_MAJOR})
     target_link_libraries(${EXECUTABLE} PRIVATE ${LINK_LIBS})
@@ -87,6 +88,7 @@ if (BUILD_CLI)
         ${src}/
         ${src}/include
     )
+    source_group("Headers" FILES ${PROJECT_HEADERS})
     if (WIN32)
         set_property(DIRECTORY ${CMAKE_PROJECT_ROOT} PROPERTY VS_STARTUP_PROJECT ${EXECUTABLE})
     endif()

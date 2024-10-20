@@ -71,7 +71,6 @@ void UUtilityFunctions::SpiralPrint(FGrid Grid)
 	int32 Right = Width - 1;
 	int32 Bottom = Height - 1;
 	int32 Left = 0;
-	int32 Index = 0;
 	FString Output;
 	while (true)
 	{
